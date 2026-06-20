@@ -134,21 +134,21 @@
             margin-top: 5px;
         }
 
-        /* Image Containers */
-        .content-wrapper {
-            position: relative;
+        /* Image Containers - inline blocks within each category flow */
+        .category-block {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 30px;
             align-items: start;
+            margin-bottom: 45px;
         }
 
-        .left-column {
-            grid-column: 1;
+        .category-block .section {
+            margin-bottom: 0;
         }
 
         .image-container {
+            order: 2;
             position: relative;
             display: flex;
             align-items: center;
@@ -157,48 +157,14 @@
             border-radius: 12px;
             overflow: hidden;
             border: 2px dashed #e63946;
-        }
-
-        .image-top-right {
-            grid-column: 2;
-            grid-row: 1;
-            height: 280px;
-            width: 100%;
-        }
-
-        .image-middle-right {
-            grid-column: 2;
-            grid-row: 2;
-            height: 300px;
-            width: 100%;
-            align-self: start;
-            margin-top: 20px;
+            min-height: 240px;
+            align-self: stretch;
         }
 
         .menu-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-        }
-
-        .iced-coffee-wrapper {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            align-items: start;
-        }
-
-        .iced-left {
-            grid-column: 1;
-        }
-
-        .image-bottom-right {
-            grid-column: 2;
-            grid-row: 1;
-            height: 280px;
-            width: 100%;
-            align-self: start;
         }
 
         .add-ons-title {
@@ -253,21 +219,19 @@
 
         /* Responsive Design */
         @media (max-width: 900px) {
-            .content-wrapper,
-            .iced-coffee-wrapper {
+            .category-block {
                 grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 35px;
             }
 
-            .image-top-right,
-            .image-middle-right,
-            .image-bottom-right {
-                grid-column: 1;
-                height: 250px;
-                margin-top: 20px;
+            .category-block .section {
+                order: 1;
             }
 
-            .iced-left {
-                grid-column: 1;
+            .image-container {
+                order: 2;
+                min-height: 220px;
             }
         }
 
@@ -371,10 +335,9 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Content Grid: Hot Coffee + Images -->
-        <div class="content-wrapper">
-            <!-- Left Column: Hot Coffee -->
-            <section class="section left-column">
+        <!-- Hot Coffee + Image -->
+        <div class="category-block">
+            <section class="section">
                 <h2 class="section-title">Hot Coffee</h2>
                 <div class="menu-grid">
                     <div class="menu-item">
@@ -427,22 +390,15 @@
                 </div>
             </section>
 
-            <!-- Top Right Image: Coffee Beans -->
-            <div class="image-container image-top-right">
-                <img src="./images/coffee-illustration-1.png" alt="Coffee illustration" class="menu-image">
-                <!-- Placeholder: reemplaza con tu imagen -->
-            </div>
-
-            <!-- Middle Right Image: Person with hat -->
-            <div class="image-container image-middle-right">
+            <div class="image-container">
                 <img src="./images/person-illustration.png" alt="Person illustration" class="menu-image">
                 <!-- Placeholder: reemplaza con tu imagen -->
             </div>
         </div>
 
-        <!-- Iced Coffee Section -->
-        <section class="section iced-coffee-wrapper">
-            <div class="iced-left">
+        <!-- Iced Coffee + Image -->
+        <div class="category-block">
+            <section class="section">
                 <h2 class="section-title">Iced Coffee</h2>
                 <div class="menu-grid">
                     <div class="menu-item">
@@ -485,44 +441,50 @@
                         <div class="item-description"></div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Bottom Right Image: Cactus -->
-            <div class="image-container image-bottom-right">
+            <div class="image-container">
                 <img src="./images/cactus-illustration.png" alt="Cactus illustration" class="menu-image">
                 <!-- Placeholder: reemplaza con tu imagen -->
             </div>
-        </section>
+        </div>
 
-        <!-- Specialty Coffee Section -->
-        <section class="section">
-            <h2 class="section-title">Specialty Coffee</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Affogato</span>
-                        <span class="item-price">$4.50</span>
+        <!-- Specialty Coffee + Image -->
+        <div class="category-block">
+            <section class="section">
+                <h2 class="section-title">Specialty Coffee</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Affogato</span>
+                            <span class="item-price">$4.50</span>
+                        </div>
+                        <div class="item-description">Vanilla ice cream topped with hot espresso</div>
                     </div>
-                    <div class="item-description">Vanilla ice cream topped with hot espresso</div>
-                </div>
 
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Honey Cinnamon Latte</span>
-                        <span class="item-price">$4.25</span>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Honey Cinnamon Latte</span>
+                            <span class="item-price">$4.25</span>
+                        </div>
+                        <div class="item-description">Espresso with hot water for a smooth</div>
                     </div>
-                    <div class="item-description">Espresso with hot water for a smooth</div>
-                </div>
 
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Dirty Chai</span>
-                        <span class="item-price">$4.75</span>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <span class="item-name">Dirty Chai</span>
+                            <span class="item-price">$4.75</span>
+                        </div>
+                        <div class="item-description">Masala chai with a shot of espresso</div>
                     </div>
-                    <div class="item-description">Masala chai with a shot of espresso</div>
                 </div>
+            </section>
+
+            <div class="image-container">
+                <img src="./images/coffee-illustration-1.png" alt="Coffee illustration" class="menu-image">
+                <!-- Placeholder: reemplaza con tu imagen -->
             </div>
-        </section>
+        </div>
 
         <!-- Add-ons & Customization -->
         <section class="section">
