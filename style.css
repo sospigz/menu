@@ -2,17 +2,14 @@
     position: relative;
     width: 100%;
     max-width: 800px;
-    /* Evita que crezca al infinito en pantallas gigantes */
     margin: 0 auto;
-
-    /* Ajusta estos números a la resolución exacta de tu póster en Canva */
-    /* Si tu póster es 1080x1920, pon 1080 / 1920 */
-    /* Si es tamaño Carta, es aproximadamente 8.5 / 11 */
-    aspect-ratio: 1 / 1.414;
-
+    
+    /* 1. Proporción exacta de tu lienzo (A4) */
+    aspect-ratio: 21 / 29.7;
+    
+    /* 2. Oculta cualquier elemento que sobresalga de este contenedor */
     overflow: hidden;
     border-radius: 8px;
-    /* Opcional, para refinar los bordes */
     background-color: transparent;
 }
 
@@ -21,6 +18,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    
+    /* 3. Empuja la barra de Canva fuera del contenedor para que sea invisible */
+    height: calc(100% + 45px); 
     border: none;
 }
